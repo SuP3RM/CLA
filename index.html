@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <!-- Material.io precompiled all-in-one CSS and JS bundles -->
   <meta name="author" content="Mario Aranda">
   <link rel="manifest" href="/manifest.json">
+  <!-- Material.io precompiled all-in-one CSS and JS bundles -->
   <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
   <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
   <!-- Material.io fonts -->
@@ -17,7 +17,34 @@
 
 <body>
   hello world
+
+
+
+
+
+
+
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://unpkg.com/material-components-web@0.40.0/dist/material-components-web.min.js"></script>
+
 <script src="js/main.js"></script>
+
+<script src="https://apis.google.com/js/platform.js"></script>
+<script src="https://apis.google.com/js/api.js"></script>
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+      .then(function(reg) {
+        // registration worked
+        console.log('Registration succeeded. Scope is ' + reg.scope);
+      }).catch(function(error) {
+        // registration failed
+        console.log('Registration failed with ' + error);
+      });
+  }
+</script>
 
 </html>
