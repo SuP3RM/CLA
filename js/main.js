@@ -1,10 +1,15 @@
 var navItems = [
-  // add more labels/items for more options
   {"label": "About", "screen": "about", "icon": "info"},
+
+  // ,
+  // {"label": "Google Sign-in", "screen": "google-sign-in", "icon": "person"}
 
 ];
 
+
+
 $(document).ready(function() {
+
 
   // initialize all components with auto-init attributes
   window.mdc.autoInit();
@@ -25,9 +30,13 @@ $(document).ready(function() {
   $("body").on('click', "nav .mdc-list-item", function (event){
     drawer.open = false;
     loadScreen($(this).attr("data-screen"));
+
   });
 
 });
+
+
+
 
 
 /**
@@ -51,11 +60,13 @@ function loadDrawerNavigationElements(navItems) {
       a.append(v.label);
       $("nav.mdc-list").append(a);
     }
+
   });
 
   $("nav.mdc-list a:eq(0)").addClass("mdc-list-item--activated");
 
 }
+
 
 /**
  * load screen content via AJAX
