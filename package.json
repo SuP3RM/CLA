@@ -1,0 +1,22 @@
+{
+  "name": "CLA",
+  "version": "1.0.0",
+  "description": "Chicago's-Local-Attractions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuP3RM/CLA.git"
+  },
+  "author": "Mario Aranda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SuP3RM/CLA/issues"
+  },
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "homepage": "https://github.com/SuP3RM/CLA"
+}
