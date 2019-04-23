@@ -1,15 +1,16 @@
 {
-  "name": "311 Graffiti Removal",
-  "author": "Mario Aranda",
-  "short_name": "Graffiti Removal",
-  "icons": [ {
-        "src": "./chicagodribble.png",
-        "type": "image/png",
-        "sizes": "144x144"
-      }],
+  "short_name": "cla",
+  "name": "Chicago's-Local-Attractions",
+  "icons": [
+    {
+      "src": "./chicagodribble.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+  ],
   "start_url": "./index.html",
-  "scope": "./",
+  "background_color": "#3367D6",
   "display": "standalone",
-  "background_color": "#2196F3",
-  "theme_color": "#2196F3"
+  "scope": "./",
+  "theme_color": "#3367D6"
 }
