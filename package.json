@@ -4,7 +4,7 @@
   "description": "Chicago's-Local-Attractions",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -15,8 +15,14 @@
   "bugs": {
     "url": "https://github.com/SuP3RM/CLA/issues"
   },
-  "scripts": {
-    "start": "webpack-dev-server"
-  },
-  "homepage": "https://github.com/SuP3RM/CLA"
+  "homepage": "https://github.com/SuP3RM/CLA",
+  "devDependencies": {
+    "css-loader": "^2.1.1",
+    "extract-loader": "^3.1.0",
+    "file-loader": "^3.0.1",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
+    "webpack": "^3.12.0",
+    "webpack-dev-server": "^2.11.5"
+  }
 }
