@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+}
+
+#contentArea {
+  padding-left: 24px;
+}
+
+.template {
+  display: none;
+}
