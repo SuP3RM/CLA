@@ -1,13 +1,13 @@
 {
-  "name": "Chicago's-Local-Attractions",
+  "name": "311 Graffiti Removal",
   "author": "Mario Aranda",
-  "short_name": "CLA",
+  "short_name": "Graffiti Removal",
   "icons": [ {
-        "src": "./chicagodribble",
+        "src": "./chicagodribble.png",
         "type": "image/png",
         "sizes": "144x144"
       }],
-  "start_url": ".",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#2196F3",
