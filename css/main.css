@@ -9,3 +9,7 @@ body {
 .template {
   display: none;
 }
+
+.mdc-top-app-bar {
+  background-color: blue;
+}
