@@ -2,6 +2,8 @@ var navItems = [
   {"label": "About", "screen": "about", "icon": "info"},
   {"label": "Resources", "screen": "resources", "icon": "library_books"},
   "divider",
+  {"label": "Data example", "screen": "data", "icon": "list"},
+  {"label": "Sheet as API", "screen": "sheet-as-api", "icon": "list"}
 
   // ,
   // {"label": "Google Sign-in", "screen": "google-sign-in", "icon": "person"}
