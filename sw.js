@@ -1,8 +1,8 @@
 var cacheName = 'mca-v1';
 var appShellFiles = [
   "./index.html",
-  "./main.js",
-  "./main.css",
+  "./script.js",
+  "./script.css",
   "./chicagodribble.png"
 ];
 
