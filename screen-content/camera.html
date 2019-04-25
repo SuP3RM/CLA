@@ -1,6 +1,5 @@
 <style>
-  html,
-  body {
+  main {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -51,21 +50,28 @@
 </style>
 
 <!-- Camera -->
-<main id="camera">
 
-  <!-- Camera view -->
-  <video id="camera--view" autoplay playsinline></video>
+<body>
 
-  <!-- Camera sensor -->
-  <canvas id="camera--sensor"></canvas>
+  <!-- Camera -->
+  <main id="camera">
 
-  <!-- Camera output -->
-  <img src="//:0" alt="" id="camera--output">
+    <!-- Camera view -->
+    <video id="camera--view" autoplay playsinline></video>
 
-  <!-- Camera trigger -->
-  <button id="camera--trigger">Take a picture</button>
+    <!-- Camera sensor -->
+    <canvas id="camera--sensor"></canvas>
 
-</main>
+    <!-- Camera output -->
+    <img src="//:0" alt="" id="camera--output">
+
+    <!-- Camera trigger -->
+    <button id="camera--trigger">Take a picture</button>
+
+  </main>
+
+</body>
+
 
 <script>
   // Set constraints for the video stream
@@ -100,7 +106,8 @@
     cameraSensor.width = cameraView.videoWidth;
     cameraSensor.height = cameraView.videoHeight;
     cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
-    cameraOutput.src = cameraSensor.toDataURL("image/webp");
+    cameraOutput.src = cameraSensor.toDataURL("image");
+    console.log(cameraOutput);
     cameraOutput.classList.add("taken");
   };
 
