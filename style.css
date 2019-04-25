@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+}
+
+#contentArea {
+  padding-left: 24px;
+}
+
+.template {
+  display: none;
+}
+
+.mdc-top-app-bar__row {
+  background-color: blue;
+}
+
+.mdc-image-list {
+  max-width: 35%;
+}
+
+.mdc-image-list__item {
+  margin: 2.5%;
+}

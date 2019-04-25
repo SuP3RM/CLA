@@ -1,15 +1,26 @@
-var navItems = [
-  {"label": "About", "screen": "about", "icon": "info"},
-  {"label": "Resources", "screen": "resources", "icon": "library_books"},
+var navItems = [{
+    "label": "About",
+    "screen": "about",
+    "icon": "info"
+  },
+  {
+    "label": "Resources",
+    "screen": "resources",
+    "icon": "library_books"
+  },
   "divider",
-  {"label": "Data example", "screen": "data", "icon": "list"},
-  {"label": "Sheet as API", "screen": "sheet-as-api", "icon": "list"}
-
-  // ,
-  // {"label": "Google Sign-in", "screen": "google-sign-in", "icon": "person"}
+  {
+    "label": "Map",
+    "screen": "map",
+    "icon": "map"
+  },
+  {
+    "label": "Take a Photo",
+    "screen": "camera",
+    "icon": "camera"
+  }
 
 ];
-
 
 
 $(document).ready(function() {
@@ -26,22 +37,22 @@ $(document).ready(function() {
   const drawer = $("aside")[0].MDCDrawer;
 
   // open the drawer when the menu icon is clicked
-  $(".mdc-top-app-bar__navigation-icon").on("click", function(){
+  $(".mdc-top-app-bar__navigation-icon").on("click", function() {
     drawer.open = true;
   });
 
   // close the drawer and load the selected screen
-  $("body").on('click', "nav .mdc-list-item", function (event){
+  $("body").on('click', "nav .mdc-list-item", function(event) {
     drawer.open = false;
     loadScreen($(this).attr("data-screen"));
 
   });
 
+  $("#camera-icon").on("click", function() {
+    loadScreen("camera");
+  });
+
 });
-
-
-
-
 
 /**
  * load nav
@@ -49,11 +60,11 @@ $(document).ready(function() {
  * @param {array} navItems - array of items for the drawer
  */
 function loadDrawerNavigationElements(navItems) {
-  $.each(navItems, function(i,v) {
+  $.each(navItems, function(i, v) {
     if (v == "divider") {
-        var divider = $("<hr>").addClass("mdc-list-divider");
-        $("nav.mdc-list").append(divider);
-    } else {    // create and append an anchor to the list
+      var divider = $("<hr>").addClass("mdc-list-divider");
+      $("nav.mdc-list").append(divider);
+    } else { // create and append an anchor to the list
       var a = $("<a>").addClass("mdc-list-item");
       if (v.hasOwnProperty("icon")) {
         var icon = $("<i>").addClass("material-icons mdc-list-item__graphic");
@@ -71,15 +82,14 @@ function loadDrawerNavigationElements(navItems) {
 
 }
 
-
 /**
  * load screen content via AJAX
  * @function
  * @param {string} screenName - name to load, without _
  */
 function loadScreen(screenName) {
-  $("#content").load("./screen-content/_" + screenName + ".html", function () {
+  $("#content").load("./screen-content/_" + screenName + ".html", function() {
     console.log("------ Screen load: " + screenName);
-});
+  });
 
 }

@@ -1,0 +1,44 @@
+<div id="screenContent">
+  <h3 class="mdc-typography--headline3">Resources</h3>
+  <ul class="mdc-list demo-list mdc-list--two-line">
+    <li class="template mdc-list-item mdc-ripple-upgraded" tabindex="-1"><span class="mdc-list-item__text"><span class="mdc-list-item__primary-text">Line item</span><span class="mdc-list-item__secondary-text">Secondary text</span></span></li>
+  </ul>
+</div>
+
+<script>
+  var resources = [{
+      name: "jQuery",
+      url: "http://jquery.com/",
+      desc: "JS Library that makes our coding lives easier",
+      tags: "script"
+    },
+    {
+      name: "Material Components for the Web",
+      url: "https://material.io/develop/web/",
+      desc: "HTML/CSS/JS implementation of Google's Material Design",
+      tags: "UI"
+    },
+    {
+      name: "Foursqaure",
+      url: "https://foursquare.com/",
+      desc: "Put the most trusted, independent location data and technology platform to work for your business",
+      tags: "Location API"
+    },
+    {
+      name: "Google Maps",
+      url: "https://developers.google.com/maps/documentation/javascript/tutorial",
+      desc: "The Maps JavaScript API lets you customize maps with your own content and imagery for display on web pages and mobile devices",
+      tags: "Google Maps API"
+    }
+  ];
+
+
+  $.each(resources, function(i, v) {
+    let clone = $("#screenContent li.template").clone();
+    clone.find(".mdc-list-item__primary-text").text(v.name);
+    clone.find(".mdc-list-item__secondary-text").text(v.desc);
+    clone.removeClass("template");
+    clone.attr("id", v.name);
+    $("#screenContent ul").append(clone);
+  });
+</script>

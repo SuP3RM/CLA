@@ -1,0 +1,154 @@
+<style>
+  #map {
+    height: 500px;
+  }
+</style>
+
+<h3 class="mdc-typography--headline3">Map of Chicago</h3>
+<h4 class="mdc-typography--headline4">Click around to see restaurants!</h4>
+
+<div id="map"></div>
+
+<script>
+  // Main Javascript for map
+  let map;
+  // storing markers in array for use later
+  let markersArray = [];
+
+  let chicago = {
+    lat: 41.8781,
+    lng: -87.6298
+  };
+
+  const zomatoAPI = "https://developers.zomato.com/api/v2.1/cities?q=chicago&lat=41.8781&lon=-87.6298&count=100";
+
+  const cityOfChicagoAPI = "https://data.cityofchicago.org/resource/4ijn-s7e5.json?facility_type=Restaurant&$limit=50";
+
+  // style for Google map
+  var styles = [{
+      featureType: 'all',
+      elementType: 'all',
+      stylers: [{
+          invert_lightness: true
+        },
+        {
+          saturation: '-9'
+        },
+        {
+          lightness: '0'
+        },
+        {
+          visibility: 'simplified'
+        }
+      ]
+    },
+    {
+      featureType: 'landscape.man_made',
+      elementType: 'all',
+      stylers: [{
+        weight: '1.00'
+      }]
+    },
+    {
+      featureType: 'road.highway',
+      elementType: 'all',
+      stylers: [{
+        weight: '0.49'
+      }]
+    },
+    {
+      featureType: 'road.highway',
+      elementType: 'labels',
+      stylers: [{
+          visibility: 'on'
+        },
+        {
+          weight: '0.01'
+        },
+        {
+          lightness: '-7'
+        },
+        {
+          saturation: '-35'
+        }
+      ]
+    },
+    {
+      featureType: 'road.highway',
+      elementType: 'labels.text',
+      stylers: [{
+        visibility: 'on'
+      }]
+    },
+    {
+      featureType: 'road.highway',
+      elementType: 'labels.text.stroke',
+      stylers: [{
+        visibility: 'off'
+      }]
+    },
+    {
+      featureType: 'road.highway',
+      elementType: 'labels.icon',
+      stylers: [{
+        visibility: 'on'
+      }]
+    }
+  ];
+
+
+  // Initialize and add the map
+  function initMap() {
+    let map = new google.maps.Map(document.getElementById('map'), {
+      center: chicago,
+      zoom: 11,
+      styles: styles
+    });
+
+    $.get(cityOfChicagoAPI, function(response) {
+      let data = response;
+      createMarkers(map, data);
+    });
+
+    function createMarkers(map, data) {
+
+      $.each(data, function(i, v) {
+        let marker;
+        let location = {
+          lat: parseFloat(v.latitude),
+          lng: parseFloat(v.longitude)
+        }
+
+        if (v.facility_type === "Restaurant") {
+          marker = new google.maps.Marker({
+            map: map,
+            position: location,
+            icon: {
+              url: "https://maps.google.com/mapfiles/ms/icons/purple-dot.png"
+            }
+          })
+        } else {
+          marker = null;
+        }
+
+        let infowindow = new google.maps.InfoWindow({
+          content: v.aka_name + '<br/>Address: ' + v.address
+        });
+
+        marker.addListener('click', function(results) {
+          infowindow.open(map, marker);
+        });
+
+        // let textBox = document.getElementById("input-search-bar").innerHTML;
+        // console.log(textBox);
+        // if (textBox.innerHTML > 0) {
+        //   marker.setMap(null);
+
+        // }
+
+      });
+    }
+  };
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyACQ-Se5XgECXNgPfbY88TBNMYoijTtSUI&callback=initMap" async defer></script>
