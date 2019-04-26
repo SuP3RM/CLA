@@ -1,5 +1,7 @@
-body {
+html, body {
   margin: 0;
+  display: flex;
+  max-width: max-content;
 }
 
 #contentArea {
@@ -11,7 +13,7 @@ body {
 }
 
 .mdc-top-app-bar__row {
-  background-color: blue;
+  background-color: #B3DDF2;
 }
 
 .mdc-image-list {
@@ -21,3 +23,20 @@ body {
 .mdc-image-list__item {
   margin: 2.5%;
 }
+
+/* ====================== Media Queries ====================== */
+@media screen and (max-width: 1100px) {}
+
+@media screen and (max-width: 1024px) {}
+
+@media screen and (max-width: 950px) {}
+
+@media screen and (max-width: 768px) {}
+
+@media screen and (min-width: 650px) and (max-width: 768px) {}
+
+@media screen and (max-width: 635px) {}
+
+@media screen and (min-width: 426px) {}
+
+@media screen and (max-width: 400px) {}

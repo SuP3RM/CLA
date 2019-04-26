@@ -1,1 +1,2 @@
-# Chicago's-Local-Attractions
+# Chicago's Local Attractions (CLA)
+Made by Mario Aranda

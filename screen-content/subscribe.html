@@ -1,0 +1,65 @@
+<head>
+  <!-- Include Dexie -->
+  <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; text-decoration: none; }
+
+    body { min-height: 100%; }
+    section { margin: .5rem 0; }
+    h2 { margin: 3rem 0 1rem; }
+
+    /* Documentation Link */
+    .documentation { position: fixed; bottom: 10px; right: 10px; background: blue; color: white; border-radius: 3px; padding: .5rem 1rem; }
+
+  </style>
+
+<body>
+  <h2 class="mdc-typography--headline2">❤ Subsribe to CLA! ❤</h2>
+
+  <!-- IndexedDB for "mailing list -->
+  <section id="mailing-list">
+    <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+      <input id="name-input" type="text" class="mdc-text-field__input" placeholder="Enter your name" value="">
+      <!-- <input id="name" type="text" placeholder="Enter your name" value=""> -->
+      <div class="mdc-line-ripple"></div>
+    </div>
+    <div class="mdc-text-field" data-mdc-auto-init="MDCTextField">
+      <input id="full-func-text-field" type="text" class="mdc-text-field__input" placeholder="Enter your email" value="">
+      <!-- <input id="email" type="text" placeholder="Enter your email" value=""> -->
+      <div class="mdc-line-ripple"></div>
+    </div>
+  </section>
+  <button id="getFormData" class="mdc-button mdc-button--outlined" type="button" name="button">Submit</button>
+
+  <script>
+    // activate mdc-button
+    window.mdc.autoInit();
+
+    // Define your database
+    let db = new Dexie("emails_database");
+    db.version(2).stores({
+      mailingList: 'name, email'
+    });
+
+    // Put some data into it]
+    $(document).ready(function() {
+
+      $("#getFormData").on("click", function() {
+
+        let formName = document.getElementById('name-input').valueOf(0).value;
+        let formEmail = document.getElementById('full-func-text-field').valueOf(0).value;
+
+        db.mailingList.put({
+          name: formName,
+          email: formEmail
+        });
+
+      })
+    });
+  </script>
+
+</body>
+
+</head>

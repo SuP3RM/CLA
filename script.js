@@ -4,7 +4,7 @@ var navItems = [{
     "icon": "info"
   },
   {
-    "label": "Resources",
+    "label": "Resources Used",
     "screen": "resources",
     "icon": "library_books"
   },
@@ -18,13 +18,16 @@ var navItems = [{
     "label": "Take a Photo",
     "screen": "camera",
     "icon": "camera"
+  },
+  {
+    "label": "❤ Subsribe ❤",
+    "screen": "subscribe",
+    "icon": "email"
   }
 
 ];
 
-
 $(document).ready(function() {
-
 
   // initialize all components with auto-init attributes
   window.mdc.autoInit();
@@ -48,8 +51,15 @@ $(document).ready(function() {
 
   });
 
+  // camera shortcut with material.io icon
   $("#camera-icon").on("click", function() {
     loadScreen("camera");
+  });
+
+  // subscribe shortcut with material.io icon
+  $("#email-icon").on("click", function() {
+    loadScreen("subscribe");
+
   });
 
 });

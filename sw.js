@@ -3,7 +3,13 @@ var appShellFiles = [
   "./index.html",
   "./script.js",
   "./style.css",
-  "./chicagodribble.png"
+  "./manifest.json",
+  "./chicagodribble.png",
+  "./screen-content/about.html",
+  "./screen-content/camera.html",
+  "./screen-content/home.html",
+  "./screen-content/map.html",
+  "./screen-content/resources.html"
 ];
 
 
