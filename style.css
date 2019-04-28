@@ -1,11 +1,12 @@
 html, body {
   margin: 0;
-  display: flex;
-  max-width: max-content;
+  max-width: 100%;
 }
 
 #contentArea {
-  padding-left: 24px;
+  text-align: center;
+  padding: 2%;
+  max-width: 100%;
 }
 
 .template {
@@ -16,27 +17,22 @@ html, body {
   background-color: #B3DDF2;
 }
 
+.mdc-top-app-bar__title {
+  font-size: 190%;
+}
+
+.mdc-typography--body2 {
+  padding: 20px;
+}
+
 .mdc-image-list {
-  max-width: 35%;
+  max-width: 50%;
 }
 
-.mdc-image-list__item {
-  margin: 2.5%;
+.mdc-list-item__text {
+  text-align: left;
 }
 
-/* ====================== Media Queries ====================== */
-@media screen and (max-width: 1100px) {}
-
-@media screen and (max-width: 1024px) {}
-
-@media screen and (max-width: 950px) {}
-
-@media screen and (max-width: 768px) {}
-
-@media screen and (min-width: 650px) and (max-width: 768px) {}
-
-@media screen and (max-width: 635px) {}
-
-@media screen and (min-width: 426px) {}
-
-@media screen and (max-width: 400px) {}
+.mdc-list-item__secondary-text {
+  white-space: normal;
+}

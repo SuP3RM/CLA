@@ -9,7 +9,8 @@ var appShellFiles = [
   "./screen-content/camera.html",
   "./screen-content/home.html",
   "./screen-content/map.html",
-  "./screen-content/resources.html"
+  "./screen-content/resources.html",
+  "./screen-content/subscribe.html"
 ];
 
 

@@ -11,6 +11,11 @@
   <link rel="stylesheet" href="https://unpkg.com/material-components-web@0.40.0/dist/material-components-web.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link href="style.css" rel="stylesheet" type="text/css">
+
+  <!-- Include Dexie -->
+  <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -19,7 +24,7 @@
     <div class="mdc-top-app-bar__row">
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
         <a href="#" class="material-icons mdc-top-app-bar__navigation-icon">menu</a>
-        <div class="mdc-top-app-bar__title">CHI LOCAL ATTRACTIONS</div>
+        <div class="mdc-top-app-bar__title">CLA</div>
       </section>
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end" role="toolbar">
         <a id="camera-icon" href="#" class="material-icons mdc-top-app-bar__action-item" aria-label="Take A Photo">camera</a>
@@ -30,7 +35,7 @@
   <!-- the navigation drawer -->
   <aside class="mdc-drawer mdc-drawer--modal" data-mdc-auto-init="MDCDrawer">
     <div class="mdc-drawer__header">
-      <h3 class="mdc-drawer__title"> CLA Menu</h3>
+      <h3 class="mdc-drawer__title">CLA Menu</h3>
     </div>
     <div class="mdc-drawer__content">
       <nav class="mdc-list">
@@ -67,7 +72,14 @@
           console.log('Registration failed with ' + error);
         });
     }
+
+    // Defined database
+    let db = new Dexie("emails_database");
+    db.version(2).stores({
+      mailingList: 'name, email'
+    });
   </script>
+
 
 </body>
 

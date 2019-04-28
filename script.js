@@ -27,7 +27,9 @@ var navItems = [{
 
 ];
 
+
 $(document).ready(function() {
+
 
   // initialize all components with auto-init attributes
   window.mdc.autoInit();
@@ -101,5 +103,4 @@ function loadScreen(screenName) {
   $("#content").load("./screen-content/" + screenName + ".html", function() {
     console.log("------ Screen load: " + screenName);
   });
-
 }

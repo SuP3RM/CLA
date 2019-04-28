@@ -1,13 +1,23 @@
 <style>
   #map {
     height: 500px;
+    max-width: 100%;
+  }
+
+  #map-border {
+    border: 10px;
+    margin: 10px;
   }
 </style>
 
-<h3 class="mdc-typography--headline3">Map of Chicago</h3>
-<h4 class="mdc-typography--headline4">Click around to see restaurants!</h4>
+<h2 class="mdc-typography--headline2">Map of Chicago</h2>
+<h4 class="mdc-typography--headline4">Click around to see restaurants and landmarks!</h4>
+<p class="mdc-typography--Subtitle2"><b style="color: red;">Red</b> Markers are Resturants while <b style="color: blue;">Blue</b> Markers are Landmarks</p>
 
-<div id="map"></div>
+
+<div id="map-border">
+  <div id="map"></div>
+</div>
 
 <script>
   // Main Javascript for map
@@ -20,9 +30,11 @@
     lng: -87.6298
   };
 
-  const zomatoAPI = "https://developers.zomato.com/api/v2.1/cities?q=chicago&lat=41.8781&lon=-87.6298&count=100";
+  let hereLandmarksAPI = "https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?app_id=5Yw2IcQnYuz36feJwnox&app_code=YmywVPigLQTjLkFm47tKMA&mode=retrieveLandmarks&prox=41.8781,-87.6298,10000"
+  console.log(`1st API used is from here Technologies: ${hereLandmarksAPI}`);
 
-  const cityOfChicagoAPI = "https://data.cityofchicago.org/resource/4ijn-s7e5.json?facility_type=Restaurant&$limit=50";
+  let cityOfChicagoAPI = "https://data.cityofchicago.org/resource/4ijn-s7e5.json?facility_type=Restaurant&$limit=50";
+  console.log(`2nd API used is from city of chicago: ${cityOfChicagoAPI}`);
 
   // style for Google map
   var styles = [{
@@ -105,14 +117,21 @@
       styles: styles
     });
 
+    // use cityofchicago API
     $.get(cityOfChicagoAPI, function(response) {
-      let data = response;
-      createMarkers(map, data);
+      let data1 = response;
+      createMarkers1(map, data1);
     });
 
-    function createMarkers(map, data) {
+    // use hereLandmarksAPI
+    $.get(hereLandmarksAPI, function(landmarks) {
+      let data2 = landmarks;
+      createMarkers2(map, data2);
+    });
 
-      $.each(data, function(i, v) {
+    function createMarkers1(map, data1) {
+
+      $.each(data1, function(i, v) {
         let marker;
         let location = {
           lat: parseFloat(v.latitude),
@@ -124,7 +143,7 @@
             map: map,
             position: location,
             icon: {
-              url: "https://maps.google.com/mapfiles/ms/icons/purple-dot.png"
+              url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png"
             }
           })
         } else {
@@ -135,16 +154,50 @@
           content: v.aka_name + '<br/>Address: ' + v.address
         });
 
-        marker.addListener('click', function(results) {
+        marker.addListener('click', function(results1) {
           infowindow.open(map, marker);
         });
 
-        // let textBox = document.getElementById("input-search-bar").innerHTML;
-        // console.log(textBox);
-        // if (textBox.innerHTML > 0) {
-        //   marker.setMap(null);
+      });
+    }
 
-        // }
+    function createMarkers2(map, data2) {
+
+      $.each(data2, function(i, v) {
+        results = v.View[0].Result;
+        for (res of results) {
+          loc = res.Location.DisplayPosition;
+          let marker;
+          let location = {
+            lat: loc.Latitude,
+            lng: loc.Longitude
+          };
+
+          if (res.MatchLevel === "landmark") {
+            marker = new google.maps.Marker({
+              map: map,
+              position: location,
+              icon: {
+                url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+              }
+            })
+          };
+
+          let infowindow = new google.maps.InfoWindow({
+            content: `Name: ${res.Location.Name}`
+          });
+
+          marker.addListener('click', function(results2) {
+            infowindow.open(map, marker);
+          });
+
+          // let textBox = document.getElementById("input-search-bar").innerHTML;
+          // console.log(textBox);
+          // if (textBox.innerHTML > 0) {
+          //   marker.setMap(null);
+          // }
+
+        }
 
       });
     }

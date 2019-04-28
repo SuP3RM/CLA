@@ -1,5 +1,5 @@
 <style>
-  main {
+  body {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -106,8 +106,7 @@
     cameraSensor.width = cameraView.videoWidth;
     cameraSensor.height = cameraView.videoHeight;
     cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
-    cameraOutput.src = cameraSensor.toDataURL("image");
-    console.log(cameraOutput);
+    cameraOutput.src = cameraSensor.toDataURL("image/webp");
     cameraOutput.classList.add("taken");
   };
 
